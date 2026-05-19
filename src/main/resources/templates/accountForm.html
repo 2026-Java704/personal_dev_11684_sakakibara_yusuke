@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>新規ユーザー登録</h1>
+
+	<form action="/account" method="post">
+		<ul th:if="${errorList}" class="error">
+			<li th:each="error:${errorList}" th:text="${error}" style="color: red"></li>
+		</ul>
+		<table border="1">
+			<tr>
+				<th>ユーザー名</th>
+				<td>
+					<input type="text" name="name" th:value="${name}">
+				</td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td>
+					<input type="text" name="password">
+				</td>
+			</tr>
+		</table>
+		<button>登録</button>
+
+	</form>
+
+</body>
+
+</html>
