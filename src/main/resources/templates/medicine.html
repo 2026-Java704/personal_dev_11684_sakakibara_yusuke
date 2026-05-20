@@ -21,10 +21,15 @@
 		<tr th:each="medic:${medicine}">
 			<td th:text="${medic.id}"></td>
 			<td th:text="${medic.name}"></td>
+			<td th:text="${medic.mcheck}"></td>
 			<td th:text="${medic.count}"></td>
 			<td th:text="${medic.note}"></td>
+			<td>
+				<form th:action="@{/medicine/{medicineId}/edit(medicineId=${medic.id})}" method="get">
+					<button>更新</button>
+				</form>
+			</td>
 		</tr>
-		
 	</table>
 </body>
 </html>
