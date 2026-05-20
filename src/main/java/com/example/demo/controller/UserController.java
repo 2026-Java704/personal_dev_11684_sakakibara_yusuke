@@ -55,8 +55,9 @@ public class UserController {
 		User user = userList.get(0);
 
 		account.setName(user.getName());
+		account.setId(user.getuserId());
 
-		return "medicine";
+		return "redirect:/medicine";
 	}
 
 	@GetMapping("/account")

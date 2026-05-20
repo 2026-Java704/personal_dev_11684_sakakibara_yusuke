@@ -18,7 +18,12 @@
 			<th>更新</th>
 			<th>削除</th>
 		</tr>
-		
+		<tr th:each="medic:${medicine}">
+			<td th:text="${medic.id}"></td>
+			<td th:text="${medic.name}"></td>
+			<td th:text="${medic.count}"></td>
+			<td th:text="${medic.note}"></td>
+		</tr>
 		
 	</table>
 </body>
