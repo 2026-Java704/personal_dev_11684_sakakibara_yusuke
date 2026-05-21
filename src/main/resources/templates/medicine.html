@@ -4,11 +4,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
+	<header th:replace="~{header}"></header>
 	<h1>服薬一覧</h1>
-	[[${@account.name}]]さんがログイン中
 
 	<table border="1">
 		<tr>
@@ -43,8 +44,8 @@
 			</td>
 		</tr>
 	</table>
-
-	<a href="/medicine/add">新規登録</a>
+		<a href="/medicine/add" class="btn_14">お薬の追加</a>
+<!--	<a href="/medicine/add">薬の追加</a>-->
 	<h2>服薬済み</h2>
 	<table border="1">
 		<tr>

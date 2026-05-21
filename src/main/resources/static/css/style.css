@@ -1,0 +1,57 @@
+
+body {
+	background-color: rgb(128, 255, 255); /* 背景色  */
+	text-align: center; /* 中央寄せ */
+    min-width: 900px; /* 最小幅 */
+}
+header {
+	background-color: rgb(255, 0, 128); /* 背景色 */
+	color: #ffffff; /* 文字色 */
+	padding-top: 5px; /* 内側余白(上) */
+	padding-bottom: 5px; /* 内側余白(下) */
+}
+/* 表線 */
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid #7d8bae;
+}
+/* 表 */
+table {
+    margin: 5px auto;
+    min-width: 800px;
+	background-color: #ffffff;
+}
+/* 表見出しセル */
+table th {
+	background: rgb(255, 0, 128);
+	color: #ffffff;
+}
+button {
+	margin: 2px;
+	padding: 5px 20px;
+	background-color: #e5857b;
+	color: #ffffff;
+	border: none;
+	width:150px;
+	cursor: pointer;
+}
+a.btn_14 {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	position: relative;
+	width: 80px;
+	margin: auto;
+	padding: 0.4rem 2rem;
+	font-weight: bold;
+	border-radius: 0.8rem;
+	border-bottom: 7px solid #0686b2;
+	background: #27acd9;
+	color: #fff;
+}
+
+a.btn_14:hover {
+	margin-top: 6px;
+	border-bottom: 1px solid #0686b2;
+	color: #fff;
+}

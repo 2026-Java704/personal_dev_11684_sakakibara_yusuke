@@ -4,11 +4,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
-	<h1>ユーザーログイン</h1>
-	
+	<header>
+		<h1>お薬チェックン</h1>
+	</header>
+	<h2>ユーザーログイン</h1>
 	<span th:text="${message}" style="color: red"></span>
 
 	<form action="/login" method="post">
@@ -16,7 +19,7 @@
 
 		<input type="password" name="password" placeholder="パスワード"><br>
 
-		<button>ログイン</button>
+		<button>ログイン</button><br>
 
 		<a href="/account">新規ユーザー登録はこちら</a>
 	</form>

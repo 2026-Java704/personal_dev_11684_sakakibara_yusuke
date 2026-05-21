@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
+	<header th:replace="~{header}"></header>
 	<h1>新規服薬登録</h1>
-	
+
 	<form action="/medicine/add" method="post">
 		<table border="1">
 			<tr>
@@ -16,13 +20,13 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="name">
+					<input type="text" name="name" placeholder="例：ビタミン剤">
 				</td>
 				<td>
-					<input type="text" name="note">
+					<input type="text" name="note" placeholder="例：食後1回1錠">
 				</td>
 				<td>
-					<input type="text" name="count">
+					<input type="text" name="count" placeholder="例：一度に飲む数">
 				</td>
 			</tr>
 		</table>
@@ -30,4 +34,5 @@
 	</form>
 
 </body>
+
 </html>
