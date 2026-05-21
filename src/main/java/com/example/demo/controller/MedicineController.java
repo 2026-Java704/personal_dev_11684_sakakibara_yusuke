@@ -46,15 +46,24 @@ public class MedicineController {
 
 	@PostMapping("/medicine")
 	public String keep(
-			@RequestParam(required = true) Boolean mcheck,
+			@RequestParam(required = false) Boolean mcheck,
 			Model model) {
 
-		List<Medicine> medicine = medicineRepository.findByMCheck(mcheck);
-		if (medicine == true) {
-
-		}
-
 		model.addAttribute("mcheck", mcheck);
+		return "redirect:/medicine";
+	}
+
+	@PostMapping("/medicine/{id}/check")
+	public String check(
+			@PathVariable Integer id,
+			@RequestParam(defaultValue = "false") Boolean mCheck) {
+
+		Medicine medicine = medicineRepository.findById(id).get();
+
+		medicine.setMCheck(mCheck);
+
+		medicineRepository.save(medicine);
+
 		return "redirect:/medicine";
 	}
 
