@@ -48,8 +48,11 @@ public class MedicineController {
 	public String keep(
 			@RequestParam(required = true) Boolean mcheck,
 			Model model) {
-		
-		List<Medicine> medicine = medicineRepository.findBy
+
+		List<Medicine> medicine = medicineRepository.findByMCheck(mcheck);
+		if (medicine == true) {
+
+		}
 
 		model.addAttribute("mcheck", mcheck);
 		return "redirect:/medicine";

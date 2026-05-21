@@ -9,4 +9,6 @@ import com.example.demo.entity.Medicine;
 public interface MedicineRepository extends JpaRepository<Medicine, Integer> {
 	List<Medicine> findByUserId(Integer userId);
 
+	List<Medicine> findByMCheck(Boolean mCheck);
+
 }
