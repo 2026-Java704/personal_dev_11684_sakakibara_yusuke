@@ -25,8 +25,8 @@
 			<td th:text="${medic.name}"></td>
 			<td th:text="${medic.count}"></td>
 			<td>
-				<input type="radio" name="mcheck" value="true" th:checked="${medic.mcheck == true}"> 済
-				<input type="radio" name="mcheck" value="false" th:checked="${medic.mcheck == false}"> 未済
+				<input type="radio" name="mcheck" value="true" th:checked="${medic.mCheck == true}"> 済
+				<input type="radio" name="mcheck" value="false" th:checked="${medic.mCheck == false}"> 未済
 			</td>
 			<td th:text="${medic.note}"></td>
 			<td>

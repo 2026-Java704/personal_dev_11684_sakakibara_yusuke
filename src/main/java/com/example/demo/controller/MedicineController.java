@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Medicine;
+import com.example.demo.entity.User;
 import com.example.demo.model.Account;
 import com.example.demo.repository.MedicineRepository;
 import com.example.demo.repository.UserRepository;
@@ -41,6 +42,14 @@ public class MedicineController {
 		model.addAttribute("medicine", medicineList);
 
 		return "medicine";
+	}
+
+	@PostMapping("/medicine")
+	public String keep(
+			@RequestParam(required = false) Boolean mcheak,
+			Model model) {
+		model.addAttribute("mcheak", mcheak);
+		return "redirect:/medicine";
 	}
 
 	//更新
@@ -85,10 +94,15 @@ public class MedicineController {
 	public String store(
 			@RequestParam(defaultValue = "") String name,
 			@RequestParam(defaultValue = "") String note,
-			@RequestParam(defaultValue = "") Integer count) {
+			@RequestParam(defaultValue = "0") Integer count) {
 
-		Medicine medicine = new Medicine(name, note, count);
+		User user = userRepository.findById(account.getId()).get();
+		account.setId(user.getuserId());
+
+		Medicine medicine = new Medicine(name, note, count, user);
+		medicine.setMCheck(false);
 		medicineRepository.save(medicine);
 		return "redirect:/medicine";
 	}
+
 }

@@ -19,7 +19,7 @@ public class Medicine {
 	private String note;
 	private Integer count;
 	@Column(name = "m_check")
-	private Boolean mcheck;
+	private Boolean mCheck;
 	@ManyToOne
 	@JoinColumn(name = "users_id")
 	private User user;
@@ -28,10 +28,12 @@ public class Medicine {
 	public Medicine() {
 	}
 
-	public Medicine(String name, String note, Integer count) {
+	public Medicine(String name, String note, Integer count, User user) {
 		this.name = name;
 		this.note = note;
 		this.count = count;
+		this.user = user;
+
 	}
 
 	public Integer getId() {
@@ -66,12 +68,12 @@ public class Medicine {
 		this.count = count;
 	}
 
-	public Boolean getMcheck() {
-		return mcheck;
+	public Boolean getMCheck() {
+		return mCheck;
 	}
 
-	public void setMcheck(Boolean mcheck) {
-		this.mcheck = mcheck;
+	public void setMCheck(Boolean mcheck) {
+		this.mCheck = mcheck;
 	}
 
 	public User getUser() {
