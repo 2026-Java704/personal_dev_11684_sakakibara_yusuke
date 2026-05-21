@@ -48,6 +48,7 @@ public class MedicineController {
 	public String keep(
 			@RequestParam(required = false) Boolean mcheak,
 			Model model) {
+
 		model.addAttribute("mcheak", mcheak);
 		return "redirect:/medicine";
 	}
