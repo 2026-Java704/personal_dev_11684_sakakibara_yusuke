@@ -21,12 +21,12 @@
 			<th>削除</th>
 		</tr>
 		<tr th:each="medic:${medicine}">
-			<div th:if="${medic.mCheak}==false">
+			<tr th:each="medic : ${medicine}" th:if="${medic.mCheck == false}">
 			<td th:text="${medic.id}"></td>
 			<td th:text="${medic.name}"></td>
 			<td th:text="${medic.count}"></td>
 			<td>
-				<input type="checkbox" name="mcheck" value="false" th:checked="${medic.mCheck == false}"> 未済
+				<input type="checkbox" name="mcheck" th:checked="${medic.mCheck == true}"> 服薬済
 			</td>
 			<td th:text="${medic.note}"></td>
 			<td>
@@ -38,7 +38,7 @@
 				<form th:action="@{/medicine/{medicineId}/delete(medicineId=${medic.id})}" method="post">
 					<button>削除</button>
 				</form>
-			</td></div>
+			</td>
 		</tr>
 	</table>
 

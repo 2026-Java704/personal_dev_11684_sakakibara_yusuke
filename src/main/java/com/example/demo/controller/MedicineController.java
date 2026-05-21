@@ -46,10 +46,12 @@ public class MedicineController {
 
 	@PostMapping("/medicine")
 	public String keep(
-			@RequestParam(required = false) Boolean mcheak,
+			@RequestParam(required = true) Boolean mcheck,
 			Model model) {
+		
+		List<Medicine> medicine = medicineRepository.findBy
 
-		model.addAttribute("mcheak", mcheak);
+		model.addAttribute("mcheck", mcheck);
 		return "redirect:/medicine";
 	}
 
