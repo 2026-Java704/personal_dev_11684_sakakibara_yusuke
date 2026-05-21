@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
+
 <body>
 	<h1>服薬一覧</h1>
 	[[${@account.name}]]さんがログイン中
-	
+
 	<table border="1">
 		<tr>
 			<th>No</th>
@@ -21,15 +23,24 @@
 		<tr th:each="medic:${medicine}">
 			<td th:text="${medic.id}"></td>
 			<td th:text="${medic.name}"></td>
-			<td th:text="${medic.mcheck}"></td>
 			<td th:text="${medic.count}"></td>
+			<td>
+				<input type="radio" name="mcheck" value="true" th:checked="${medic.mcheck == true}"> 済
+				<input type="radio" name="mcheck" value="false" th:checked="${medic.mcheck == false}"> 未済
+			</td>
 			<td th:text="${medic.note}"></td>
 			<td>
 				<form th:action="@{/medicine/{medicineId}/edit(medicineId=${medic.id})}" method="get">
 					<button>更新</button>
 				</form>
 			</td>
+			<td>
+				<form th:action="@{/medicine/{medicineId}/delete(medicineId=${medic.id})}" method="post">
+					<button>削除</button>
+			</td>
 		</tr>
 	</table>
+	<a href="/medicine/add">新規登録</a>
 </body>
+
 </html>

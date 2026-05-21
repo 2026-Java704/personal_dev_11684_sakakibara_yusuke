@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>新規服薬登録</h1>
+	
+	<form action="/medicine/add" method="post">
+		<table border="1">
+			<tr>
+				<th>服薬名</th>
+				<th>備考欄</th>
+				<th>個数</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" name="name">
+				</td>
+				<td>
+					<input type="text" name="note">
+				</td>
+				<td>
+					<input type="text" name="count">
+				</td>
+			</tr>
+		</table>
+		<button>登録</button>
+	</form>
+
+</body>
+</html>

@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Medicine;
 import com.example.demo.model.Account;
 import com.example.demo.repository.MedicineRepository;
+import com.example.demo.repository.UserRepository;
 
 @Controller
 
 public class MedicineController {
+
+	private final UserRepository userRepository;
 	private final MedicineRepository medicineRepository;
 	private final HttpSession session;
 	private final Account account;
@@ -25,10 +28,11 @@ public class MedicineController {
 	public MedicineController(
 			MedicineRepository medicineRepository,
 			HttpSession session,
-			Account account) {
+			Account account, UserRepository userRepository) {
 		this.medicineRepository = medicineRepository;
 		this.session = session;
 		this.account = account;
+		this.userRepository = userRepository;
 	}
 
 	@GetMapping("/medicine")
@@ -39,6 +43,7 @@ public class MedicineController {
 		return "medicine";
 	}
 
+	//更新
 	@GetMapping("/medicine/{id}/edit")
 	public String edit(
 			@PathVariable Integer id,
@@ -53,14 +58,36 @@ public class MedicineController {
 			@PathVariable Integer id,
 			@RequestParam(defaultValue = "") String name,
 			@RequestParam(defaultValue = "") String note,
-			@RequestParam(defaultValue = "") Integer count,
-			@RequestParam(defaultValue = "") Boolean mcheck) {
+			@RequestParam(defaultValue = "") Integer count) {
 		Medicine medicine = medicineRepository.findById(id).get();
 		medicine.setName(name);
 		medicine.setNote(note);
 		medicine.setCount(count);
-		medicine.setMcheck(mcheck);
 
+		medicineRepository.save(medicine);
+		return "redirect:/medicine";
+	}
+
+	//削除
+	@PostMapping("/medicine/{id}/delete")
+	public String delete(@PathVariable Integer id) {
+		medicineRepository.deleteById(id);
+		return "redirect:/medicine";
+	}
+
+	//新規
+	@GetMapping("/medicine/add")
+	public String create() {
+		return "addMedicine";
+	}
+
+	@PostMapping("/medicine/add")
+	public String store(
+			@RequestParam(defaultValue = "") String name,
+			@RequestParam(defaultValue = "") String note,
+			@RequestParam(defaultValue = "") Integer count) {
+
+		Medicine medicine = new Medicine(name, note, count);
 		medicineRepository.save(medicine);
 		return "redirect:/medicine";
 	}

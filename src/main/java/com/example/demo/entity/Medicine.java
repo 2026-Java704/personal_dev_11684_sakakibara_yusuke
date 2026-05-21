@@ -24,6 +24,16 @@ public class Medicine {
 	@JoinColumn(name = "users_id")
 	private User user;
 
+	//コンストラクタ
+	public Medicine() {
+	}
+
+	public Medicine(String name, String note, Integer count) {
+		this.name = name;
+		this.note = note;
+		this.count = count;
+	}
+
 	public Integer getId() {
 		return id;
 	}
