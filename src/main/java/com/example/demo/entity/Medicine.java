@@ -8,8 +8,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
 
 @Entity
+@Service
+@Transactional
 @Table(name = "medicine")
 public class Medicine {
 	@Id

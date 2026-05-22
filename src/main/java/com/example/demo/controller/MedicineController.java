@@ -18,7 +18,6 @@ import com.example.demo.repository.MedicineRepository;
 import com.example.demo.repository.UserRepository;
 
 @Controller
-
 public class MedicineController {
 
 	private final UserRepository userRepository;
@@ -39,6 +38,10 @@ public class MedicineController {
 	@GetMapping("/medicine")
 	public String index(Model model) {
 		List<Medicine> medicineList = medicineRepository.findByUserId(account.getId());
+
+		if (account.getId() == null) {
+			return "login";
+		}
 		model.addAttribute("medicine", medicineList);
 
 		return "medicine";
@@ -58,6 +61,9 @@ public class MedicineController {
 			@PathVariable Integer id,
 			@RequestParam(defaultValue = "false") Boolean mCheck) {
 
+		if (account.getId() == null) {
+			return "login";
+		}
 		Medicine medicine = medicineRepository.findById(id).get();
 
 		medicine.setMCheck(mCheck);
@@ -73,6 +79,9 @@ public class MedicineController {
 			@PathVariable Integer id,
 			Model model) {
 		Medicine medicine = medicineRepository.findById(id).get();
+		if (account.getId() == null) {
+			return "login";
+		}
 		model.addAttribute("medicine", medicine);
 		return "editMedicine";
 	}
