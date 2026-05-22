@@ -76,6 +76,10 @@ public class UserController {
 		if (name.length() == 0) {
 			errorList.add("名前は必須です");
 		}
+		List<User> userList = userRepository.findByName(name);
+		if (userList != null && userList.size() > 0) {
+			errorList.add("既に使用されている名前です");
+		}
 		if (password.length() == 0) {
 			errorList.add("パスワードは必須です");
 		}
@@ -85,6 +89,7 @@ public class UserController {
 			model.addAttribute("password", password);
 			return "accountForm";
 		}
+
 		User user = new User(name, password);
 		userRepository.save(user);
 		return "redirect:/login";

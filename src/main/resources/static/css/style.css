@@ -1,11 +1,11 @@
 
 body {
-	background-color: rgb(128, 255, 255); /* 背景色  */
+	background-color: rgb(191, 249, 164); /* 背景色  */
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 }
 header {
-	background-color: rgb(255, 0, 128); /* 背景色 */
+	background-color: rgb(252, 171, 236); /* 背景色 */
 	color: #ffffff; /* 文字色 */
 	padding-top: 5px; /* 内側余白(上) */
 	padding-bottom: 5px; /* 内側余白(下) */
@@ -20,11 +20,24 @@ table {
     margin: 5px auto;
     min-width: 800px;
 	background-color: #ffffff;
+	border-radius: 8px;
+}
+table tr th:first-child {
+  border-radius: 10px 0 0 0; /* 左上の角だけ10px */
+}
+table tr th:last-child {
+  border-radius: 0 10px 0 0; /* 右上の角だけ10px */
+}
+table tr:last-child td:last-child {
+  border-radius: 0 0 10px 0; /* 右下の角だけ10px */
+}
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 10px; /* 左下の角だけ10px */
 }
 /* 表見出しセル */
 table th {
-	background: rgb(255, 0, 128);
-	color: #ffffff;
+	background: rgb(252, 171, 236);
+	color: rgb(70, 79, 81);
 }
 button {
 	margin: 2px;
@@ -34,6 +47,10 @@ button {
 	border: none;
 	width:150px;
 	cursor: pointer;
+	border-radius: 8px;
+}
+button:hover{
+	background-color:  rgb(214, 65, 48);
 }
 a.btn_14 {
 	display: block;
@@ -54,4 +71,56 @@ a.btn_14:hover {
 	margin-top: 6px;
 	border-bottom: 1px solid #0686b2;
 	color: #fff;
+}
+checkbox{ display: none; }
+
+checkbox+ label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #ddd;
+  cursor: pointer;}
+
+checkbox + label:last-child { margin-bottom: 0; }
+
+checkbox + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #6cc0e5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+checkbox:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+.textbox-1 {
+    width: 90%;
+    padding: 8px 5px;
+    border: 1px solid #969da3;
+    border-radius: 25px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.textbox-1::placeholder {
+    color: #999;
 }

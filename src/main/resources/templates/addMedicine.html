@@ -11,8 +11,9 @@
 	<header th:replace="~{header}"></header>
 	<h1>新規服薬登録</h1>
 
+	<span th:text="${errorMList}" style="color: red"></span>
 	<form action="/medicine/add" method="post">
-		<table border="1">
+		<table border="1" >
 			<tr>
 				<th>服薬名</th>
 				<th>備考欄</th>
@@ -20,13 +21,13 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="name" placeholder="例：ビタミン剤">
+					<input type="text" name="name" placeholder="例：ビタミン剤" class="textbox-1">
 				</td>
 				<td>
-					<input type="text" name="note" placeholder="例：食後1回1錠">
+					<input type="text" name="note" placeholder="例：食後1回1錠" class="textbox-1">
 				</td>
 				<td>
-					<input type="text" name="count" placeholder="例：一度に飲む数">
+					<input type="text" name="count" placeholder="例：一度に飲む数" class="textbox-1">
 				</td>
 			</tr>
 		</table>
