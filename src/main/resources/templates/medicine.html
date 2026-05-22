@@ -11,6 +11,7 @@
 	<header th:replace="~{header}"></header>
 	<h1>服薬一覧</h1>
 
+	<button onclick="clearAll()">確認クリア</button>
 	<table border="1">
 		<tr>
 			<th>No</th>
@@ -33,19 +34,19 @@
 			</td>
 			<td th:text="${medic.note}"></td>
 			<td>
-				<form th:action="@{/medicine/{id}/edit(id=${medic.id})}" method="get" >
-					<button type="submit">更新</button>
+				<form th:action="@{/medicine/{id}/edit(id=${medic.id})}" method="get">
+					<button class="submit">更新</button>
 				</form>
 			</td>
 			<td>
 				<form th:action="@{/medicine/{id}/delete(id=${medic.id})}" method="post">
-					<button type="submit">削除</button>
+					<button class="submit">削除</button>
 				</form>
 			</td>
 		</tr>
 	</table>
-		<a href="/medicine/add" class="btn_14">お薬の追加</a>
-<!--	<a href="/medicine/add">薬の追加</a>-->
+	<a href="/medicine/add" class="btn_14">お薬の追加</a>
+	<!--	<a href="/medicine/add">薬の追加</a>-->
 	<h2>服薬済み</h2>
 	<table border="1">
 		<tr>
@@ -70,16 +71,27 @@
 			<td th:text="${medic.note}"></td>
 			<td>
 				<form th:action="@{/medicine/{id}/edit(id=${medic.id})}" method="get">
-					<button type="submit">更新</button>
+					<button class="submit">更新</button>
 				</form>
 			</td>
 			<td>
 				<form th:action="@{/medicine/{id}/delete(id=${medic.id})}" method="post">
-					<button type="submit">削除</button>
+					<button class="submit">削除</button>
 				</form>
 			</td>
 		</tr>
 	</table>
 </body>
+<script>
+	function clearAll() {
+		// name属性が "fruit" のチェックボックスをすべて取得
+		const checkboxes = document.querySelectorAll('input[name="mCheck"]');
+
+		// ループしてチェックを外す
+		checkboxes.forEach((checkbox) => {
+			checkbox.checked = false;
+		});
+	}
+</script>
 
 </html>

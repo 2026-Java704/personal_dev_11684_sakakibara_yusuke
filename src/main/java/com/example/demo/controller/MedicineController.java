@@ -156,14 +156,11 @@ public class MedicineController {
 		if (name.length() == 0) {
 			errorMList.add("名前は必須です");
 		}
-		if (count > 0) {
-			errorMList.add("数は0以上です");
-		}
+
 		if (errorMList.size() > 0) {
 			model.addAttribute("errorMList", errorMList);
 			model.addAttribute("name", name);
-			model.addAttribute("password", note);
-			model.addAttribute("count", count);
+
 			return "addMedicine";
 		}
 

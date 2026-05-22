@@ -39,7 +39,7 @@ table th {
 	background: rgb(252, 171, 236);
 	color: rgb(70, 79, 81);
 }
-button {
+.submit {
 	margin: 2px;
 	padding: 5px 20px;
 	background-color: #e5857b;
@@ -49,9 +49,11 @@ button {
 	cursor: pointer;
 	border-radius: 8px;
 }
-button:hover{
+.submit:hover{
 	background-color:  rgb(214, 65, 48);
 }
+
+
 a.btn_14 {
 	display: block;
 	text-align: center;
