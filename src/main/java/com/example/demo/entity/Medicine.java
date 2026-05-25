@@ -44,6 +44,18 @@ public class Medicine {
 
 	}
 
+	public Medicine(String name, String note, Integer count, Boolean morning, Boolean daytime, Boolean night,
+			User user) {
+		this.name = name;
+		this.note = note;
+		this.count = count;
+		this.user = user;
+		this.morning = morning;
+		this.daytime = daytime;
+		this.night = night;
+
+	}
+
 	public Integer getId() {
 		return id;
 	}

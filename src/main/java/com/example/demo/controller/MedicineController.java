@@ -192,7 +192,10 @@ public class MedicineController {
 		User user = userRepository.findById(account.getId()).get();
 		account.setId(user.getuserId());
 
-		Medicine medicine = new Medicine(name, note, count, user);
+		Medicine medicine = new Medicine(name, note, count, morning, daytime, night, user);
+		model.addAttribute("morning", morning);
+		model.addAttribute("daytime", daytime);
+		model.addAttribute("night", night);
 		medicine.setMCheck(false);
 		medicineRepository.save(medicine);
 		return "redirect:/medicine";
