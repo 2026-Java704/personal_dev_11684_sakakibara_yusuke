@@ -10,8 +10,10 @@
 <body>
 	<header th:replace="~{header}"></header>
 	<h1>服薬一覧</h1>
-
-	<button onclick="clearAll()">確認クリア</button>
+	
+	<form th:action="@{/medicine/clear-all}" method="post">
+	    <button type="submit">確認クリア</button>
+	</form>
 	<table border="1">
 		<tr>
 			<th>No</th>

@@ -80,6 +80,28 @@ public class MedicineController {
 		return "redirect:/medicine";
 	}
 
+	@PostMapping("/medicine/clear-all")
+	public String clearAllMedicines() {
+		// ログインチェック（未ログインならログイン画面へ）
+		if (account.getId() == null) {
+			return "login";
+		}
+
+		// 1. ログインしているユーザーの薬のリストだけを安全に取得する
+		List<Medicine> medicineList = medicineRepository.findByUserId(account.getId());
+
+		// 2. そのユーザーの薬の中から、チェックがついているもの(true)をすべて解除(false)にする
+		medicineList.forEach(medicine -> {
+			if (Boolean.TRUE.equals(medicine.getMCheck())) {
+				medicine.setMCheck(false);
+				medicineRepository.save(medicine); // データベースに保存（反映）
+			}
+		});
+
+		// 3. 更新が終わったら、一覧画面にリダイレクトして再描画
+		return "redirect:/medicine";
+	}
+
 	//更新
 	@GetMapping("/medicine/{id}/edit")
 	public String edit(
@@ -151,6 +173,9 @@ public class MedicineController {
 			@RequestParam(defaultValue = "") String name,
 			@RequestParam(defaultValue = "") String note,
 			@RequestParam(defaultValue = "0") Integer count,
+			@RequestParam(defaultValue = "false") Boolean morning,
+			@RequestParam(defaultValue = "false") Boolean daytime,
+			@RequestParam(defaultValue = "false") Boolean night,
 			Model model) {
 		List<String> errorMList = new ArrayList<>();
 		if (name.length() == 0) {

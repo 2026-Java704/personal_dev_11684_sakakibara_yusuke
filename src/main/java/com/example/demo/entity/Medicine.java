@@ -25,6 +25,9 @@ public class Medicine {
 	private Integer count;
 	@Column(name = "m_check")
 	private Boolean mCheck;
+	private Boolean morning;
+	private Boolean daytime;
+	private Boolean night;
 	@ManyToOne
 	@JoinColumn(name = "users_id")
 	private User user;
@@ -79,6 +82,30 @@ public class Medicine {
 
 	public void setMCheck(Boolean mcheck) {
 		this.mCheck = mcheck;
+	}
+
+	public Boolean getMorning() {
+		return morning;
+	}
+
+	public void setMorning(Boolean morning) {
+		this.morning = morning;
+	}
+
+	public Boolean getDaytime() {
+		return daytime;
+	}
+
+	public void setDaytime(Boolean daytime) {
+		this.daytime = daytime;
+	}
+
+	public Boolean getNight() {
+		return night;
+	}
+
+	public void setNight(Boolean night) {
+		this.night = night;
 	}
 
 	public User getUser() {

@@ -15,5 +15,8 @@ CREATE TABLE medicine (
 	note VARCHAR(500),
 	count INTEGER,
 	m_check boolean NOT NULL DEFAULT FALSE,
+	morning boolean NOT NULL DEFAULT FALSE,
+	daytime boolean NOT NULL DEFAULT FALSE,
+	night boolean NOT NULL DEFAULT FALSE,
 	users_id INTEGER REFERENCES users(id)
 );
