@@ -18,6 +18,9 @@
 				<th>薬剤名</th>
 				<th>個数</th>
 				<th>備考欄</th>
+				<th>朝</th>
+				<th>昼</th>
+				<th>晩</th>
 			</tr>
 			<tr>
 				<td th:text="${medicine.id}"></td>
@@ -30,10 +33,19 @@
 				<td>
 					<input type="text" name="note" th:value="${medicine.note}">
 				</td>
-				
+				<td>
+					<input type="checkbox" name="morning" value="true">
+				</td>
+				<td>
+					<input type="checkbox" name="daytime" value="true">
+				</td>
+				<td>
+					<input type="checkbox" name="night" value="true">
+				</td>
 			</tr>
 		</table>
 		<button>更新</button>
 	</form>
 </body>
+
 </html>

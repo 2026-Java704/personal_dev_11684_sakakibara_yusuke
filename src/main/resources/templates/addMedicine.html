@@ -13,7 +13,7 @@
 
 	<span th:text="${errorMList}" style="color: red"></span>
 	<form action="/medicine/add" method="post">
-		<table border="1" >
+		<table border="1">
 			<tr>
 				<th>服薬名</th>
 				<th>備考欄</th>
@@ -32,9 +32,15 @@
 				<td>
 					<input type="text" name="count" placeholder="例：一度に飲む数" class="textbox-1">
 				</td>
-				<tb>
-					<form th:action=""
-				</tb>
+				<td>
+					<input type="checkbox" name="morning" value="true">
+				</td>
+				<td>
+					<input type="checkbox" name="daytime" value="true">
+				</td>
+				<td>
+					<input type="checkbox" name="night" value="true">
+				</td>
 			</tr>
 		</table>
 		<button>登録</button>

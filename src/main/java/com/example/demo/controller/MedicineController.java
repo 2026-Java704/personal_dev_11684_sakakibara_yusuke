@@ -37,16 +37,50 @@ public class MedicineController {
 	}
 
 	@GetMapping("/medicine")
-	public String index(Model model) {
-		List<Medicine> medicineList = medicineRepository.findByUserId(account.getId());
+	public String showMedicines(
+			@RequestParam(name = "time", defaultValue = "alltime") String time, Model model) {
+		List<Medicine> medicines;
 
-		if (account.getId() == null) {
-			return "login";
+		// パラメータの値によって、取得するデータを切り替える
+		if ("daytime".equals(time)) {
+			medicines = medicineRepository.findByUserIdAndDaytimeTrue(account.getId());
+		} else if ("night".equals(time)) {
+			medicines = medicineRepository.findByUserIdAndNightTrue(account.getId());
+		} else if ("morning".equals(time)) {
+			medicines = medicineRepository.findByUserIdAndMorningTrue(account.getId());
+		} else {
+			medicines = medicineRepository.findByUserId(account.getId());
+			time = "alltime";
 		}
-		model.addAttribute("medicine", medicineList);
+
+		// 画面に「お薬リスト」と「現在選ばれている時間帯」を渡す
+		model.addAttribute("medicine", medicines);
+		model.addAttribute("currentTime", time);
 
 		return "medicine";
 	}
+
+	//	@GetMapping("/medicine")
+	//	public String index(
+	//			@RequestParam(defaultValue = "") Boolean morning,
+	//			Model model) {
+	//		List<Medicine> medicineList = medicineRepository.findByUserId(account.getId());
+	//		// 1. データベースから朝のフラグがtrueのお薬だけを取得
+	//		// 2. 取得したリストを「morningMedicines」という名前でモデルに登録
+	//		if (account.getId() == null) {
+	//			return "login";
+	//		}
+	//		model.addAttribute("medicine", medicineList);
+	//
+	//		List<Medicine> medicineList1 = null;
+	//
+	//		if (morning == true) {
+	//			medicineList1 = medicineRepository.findByMorningTrue();
+	//		}
+	//		model.addAttribute("medicineList1", medicineList1);
+	//
+	//		return "medicine";
+	//	}
 
 	@PostMapping("/medicine")
 	public String keep(
@@ -128,7 +162,10 @@ public class MedicineController {
 			@PathVariable Integer id,
 			@RequestParam String name,
 			@RequestParam String note,
-			@RequestParam Integer count) {
+			@RequestParam Integer count,
+			@RequestParam(defaultValue = "false") Boolean morning,
+			@RequestParam(defaultValue = "false") Boolean daytime,
+			@RequestParam(defaultValue = "false") Boolean night) {
 
 		Medicine medicine = medicineRepository.findById(id).get();
 
@@ -140,6 +177,9 @@ public class MedicineController {
 		medicine.setName(name);
 		medicine.setNote(note);
 		medicine.setCount(count);
+		medicine.setMorning(morning);
+		medicine.setDaytime(daytime);
+		medicine.setNight(night);
 
 		medicineRepository.save(medicine);
 

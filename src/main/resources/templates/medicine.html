@@ -9,10 +9,20 @@
 
 <body>
 	<header th:replace="~{header}"></header>
-	<h1>服薬一覧</h1>
-	
+	<h1>服用一覧</h1>
+	<div style="margin-bottom: 20px;">
+		<a th:href="@{/medicine(time='alltime')}"
+					th:style="${currentTime == 'alltime'} ? 'font-weight:bold;' : ''">【全一覧】</a> |
+		<a th:href="@{/medicine(time='morning')}"
+			th:style="${currentTime == 'morning'} ? 'font-weight:bold;' : ''">【朝】</a> |
+		<a th:href="@{/medicine(time='daytime')}"
+			th:style="${currentTime == 'daytime'} ? 'font-weight:bold;' : ''">【昼】</a> |
+		<a th:href="@{/medicine(time='night')}" 
+		    th:style="${currentTime == 'night'} ? 'font-weight:bold;' : ''">【晩】</a>
+	</div>
+
 	<form th:action="@{/medicine/clear-all}" method="post">
-	    <button type="submit">確認クリア</button>
+		<button type="submit">確認クリア</button>
 	</form>
 	<table border="1">
 		<tr>
@@ -49,8 +59,9 @@
 	</table>
 	<a href="/medicine/add" class="btn_14">お薬の追加</a>
 	<!--	<a href="/medicine/add">薬の追加</a>-->
-	<h2>服薬済み</h2>
-	<table border="1">
+	<input type="hidden">
+	<h2 input type="hidden">服用済み</h2>
+	<table border="1" input type="hidden">
 		<tr>
 			<th>No</th>
 			<th>薬剤名</th>

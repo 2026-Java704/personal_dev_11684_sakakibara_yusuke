@@ -12,17 +12,29 @@
 		<h1>お薬チェックン</h1>
 	</header>
 	<h2>ユーザーログイン</h1>
-	<span th:text="${message}" style="color: red"></span>
+		<span th:text="${message}" style="color: red"></span>
 
-	<form action="/login" method="post">
-		<input type="text" name="name" placeholder="ユーザー名"><br>
+		<table border="1">
+			<form action="/login" method="post">
+				<tr>
+					<tb>ユーザー名
+					</tb>
+					<tb>
+						<input type="text" name="name" placeholder="ユーザー名" class="textbox-2"><br>
+					</tb>
+				</tr>
+				<tr>
+					<tb>パスワード
+					</tb>
+					<tb>
+						<input type="password" name="password" placeholder="パスワード" class="textbox-2"><br>
+					</tb>
+				</tr>
+				<button>ログイン</button><br>
 
-		<input type="password" name="password" placeholder="パスワード"><br>
-
-		<button>ログイン</button><br>
-
-		<a href="/account">新規ユーザー登録はこちら</a>
-	</form>
+				<a href="/account">新規ユーザー登録はこちら</a>
+			</form>
+		</table>
 
 </body>
 

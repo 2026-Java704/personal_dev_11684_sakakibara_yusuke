@@ -126,3 +126,15 @@ checkbox:checked + label:before {
 .textbox-1::placeholder {
     color: #999;
 }
+.textbox-2 {
+    width: 40%;
+    padding: 8px 5px;
+    border: 1px solid #969da3;
+    border-radius: 25px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.textbox-2::placeholder {
+    color: #999;
+}
