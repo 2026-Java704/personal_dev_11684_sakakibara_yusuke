@@ -1,56 +1,84 @@
-
 body {
-	background-color: rgb(191, 249, 164); /* 背景色  */
-	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
+	background-color: rgb(191, 249, 164);
+	/* 背景色  */
+	text-align: center;
+	/* 中央寄せ */
+	min-width: 900px;
+	/* 最小幅 */
 }
+
 header {
-	background-color: rgb(252, 171, 236); /* 背景色 */
-	color: #ffffff; /* 文字色 */
-	padding-top: 5px; /* 内側余白(上) */
-	padding-bottom: 5px; /* 内側余白(下) */
+	background-color: rgb(252, 171, 236);
+	/* 背景色 */
+	color: #ffffff;
+	/* 文字色 */
+	padding-top: 5px;
+	/* 内側余白(上) */
+	padding-bottom: 5px;
+	/* 内側余白(下) */
 }
+
 /* 表線 */
-table, th, td {
+table,
+th,
+td {
 	border-collapse: collapse;
 	border: 1px solid #7d8bae;
+	padding: 4px;
+
 }
+
 /* 表 */
 table {
-    margin: 5px auto;
-    min-width: 800px;
+	margin: 5px auto;
+	min-width: 800px;
 	background-color: #ffffff;
 	border-radius: 8px;
 }
+
 table tr th:first-child {
-  border-radius: 10px 0 0 0; /* 左上の角だけ10px */
+	border-radius: 10px 0 0 0;
+	/* 左上の角だけ10px */
 }
+
 table tr th:last-child {
-  border-radius: 0 10px 0 0; /* 右上の角だけ10px */
+	border-radius: 0 10px 0 0;
+	/* 右上の角だけ10px */
 }
+
 table tr:last-child td:last-child {
-  border-radius: 0 0 10px 0; /* 右下の角だけ10px */
+	border-radius: 0 0 10px 0;
+	/* 右下の角だけ10px */
 }
+
 table tr:last-child td:first-child {
-  border-radius: 0 0 0 10px; /* 左下の角だけ10px */
+	border-radius: 0 0 0 10px;
+	/* 左下の角だけ10px */
 }
+
 /* 表見出しセル */
 table th {
 	background: rgb(252, 171, 236);
 	color: rgb(70, 79, 81);
 }
+
+th,td {
+	padding: 8px;
+}
+
 .submit {
 	margin: 2px;
 	padding: 5px 20px;
 	background-color: #e5857b;
 	color: #ffffff;
 	border: none;
-	width:150px;
+	width: 150px;
 	cursor: pointer;
 	border-radius: 8px;
 }
-.submit:hover{
-	background-color:  rgb(214, 65, 48);
+
+.submit:hover {
+	background-color: rgb(214, 65, 48);
 }
 
 
@@ -74,67 +102,112 @@ a.btn_14:hover {
 	border-bottom: 1px solid #0686b2;
 	color: #fff;
 }
-checkbox{ display: none; }
 
-checkbox+ label {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 20px;
-  font: 14px/20px 'Open Sans', Arial, sans-serif;
-  color: #ddd;
-  cursor: pointer;}
-
-checkbox + label:last-child { margin-bottom: 0; }
-
-checkbox + label:before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #6cc0e5;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: .6;
-  -webkit-transition: all .12s, border-color .08s;
-  transition: all .12s, border-color .08s;
+checkbox {
+	display: none;
 }
 
-checkbox:checked + label:before {
-  width: 10px;
-  top: -5px;
-  left: 5px;
-  border-radius: 0;
-  opacity: 1;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+checkbox+label {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 20px;
+	font: 14px/20px 'Open Sans', Arial, sans-serif;
+	color: #ddd;
+	cursor: pointer;
+}
+
+checkbox+label:last-child {
+	margin-bottom: 0;
+}
+
+checkbox+label:before {
+	content: '';
+	display: block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #6cc0e5;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: .6;
+	-webkit-transition: all .12s, border-color .08s;
+	transition: all .12s, border-color .08s;
+}
+
+checkbox:checked+label:before {
+	width: 10px;
+	top: -5px;
+	left: 5px;
+	border-radius: 0;
+	opacity: 1;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 
 
 .textbox-1 {
-    width: 90%;
-    padding: 8px 5px;
-    border: 1px solid #969da3;
-    border-radius: 25px;
-    font-size: 1em;
-    line-height: 1.5;
+	width: 90%;
+	padding: 8px 5px;
+	border: 1px solid #969da3;
+	border-radius: 25px;
+	font-size: 1em;
+	line-height: 1.5;
 }
 
 .textbox-1::placeholder {
-    color: #999;
+	color: #999;
 }
+
 .textbox-2 {
-    width: 40%;
-    padding: 8px 5px;
-    border: 1px solid #969da3;
-    border-radius: 25px;
-    font-size: 1em;
-    line-height: 1.5;
+	width: 40%;
+	padding: 8px 5px;
+	border: 1px solid #969da3;
+	border-radius: 25px;
+	font-size: 1em;
+	line-height: 1.5;
 }
 
 .textbox-2::placeholder {
-    color: #999;
+	color: #999;
+}
+
+
+/* solid007 */
+/* solid004 */
+.button_solid004 a {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #FFF;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: #6bb6ff;
+    border-radius: 8px;
+    border-bottom: solid 5px #1d7fde;
+	text-decoration: none;
+}
+.button_solid004 a:hover {
+    border-bottom: solid 2px #1d7fde;
+    transform: translateY(3px);
+}
+
+.circle{
+    border-radius: 50%;
+    display: center;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100;
+    background: #6fa1ff;
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px 0;
 }

@@ -12,17 +12,17 @@
 	<h1>服用一覧</h1>
 	<div style="margin-bottom: 20px;">
 		<a th:href="@{/medicine(time='alltime')}"
-					th:style="${currentTime == 'alltime'} ? 'font-weight:bold;' : ''">【全一覧】</a> |
+			th:style="${currentTime == 'alltime'} ? 'font-weight:bold;' : ''" class="circle">全</a> 
 		<a th:href="@{/medicine(time='morning')}"
-			th:style="${currentTime == 'morning'} ? 'font-weight:bold;' : ''">【朝】</a> |
+			th:style="${currentTime == 'morning'} ? 'font-weight:bold;' : ''" class="circle">朝</a>
 		<a th:href="@{/medicine(time='daytime')}"
-			th:style="${currentTime == 'daytime'} ? 'font-weight:bold;' : ''">【昼】</a> |
+			th:style="${currentTime == 'daytime'} ? 'font-weight:bold;' : ''" class="circle">昼</a> 
 		<a th:href="@{/medicine(time='night')}" 
-		    th:style="${currentTime == 'night'} ? 'font-weight:bold;' : ''">【晩】</a>
+		    th:style="${currentTime == 'night'} ? 'font-weight:bold;' : ''" class="circle">晩</a>
 	</div>
 
 	<form th:action="@{/medicine/clear-all}" method="post">
-		<button type="submit">確認クリア</button>
+		<button type="submit" style="margin-left: 720px;">確認クリア</button>
 	</form>
 	<table border="1">
 		<tr>
@@ -57,7 +57,9 @@
 			</td>
 		</tr>
 	</table>
-	<a href="/medicine/add" class="btn_14">お薬の追加</a>
+	<div class="button_solid004">
+	<a href="/medicine/add">お薬の追加</a>
+	</div>
 	<!--	<a href="/medicine/add">薬の追加</a>-->
 	<input type="hidden">
 	<h2 input type="hidden">服用済み</h2>
@@ -94,6 +96,9 @@
 			</td>
 		</tr>
 	</table>
+	<form th:action="/medicine/time">
+		<button>rireki</button>
+	</form>
 </body>
 <script>
 	function clearAll() {

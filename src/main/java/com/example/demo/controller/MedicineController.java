@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -239,6 +240,22 @@ public class MedicineController {
 		medicine.setMCheck(false);
 		medicineRepository.save(medicine);
 		return "redirect:/medicine";
+	}
+
+	@GetMapping("/medicine/time")
+	public String time(
+			@RequestParam(defaultValue = "") Boolean mCheck,
+			Model model) {
+
+		List<Medicine> medicine = medicineRepository.findByMCheck(mCheck);
+
+		if (mCheck == true) {
+			LocalDateTime myObj = LocalDateTime.now();
+			System.out.println(myObj);
+		}
+
+		return "medicineTime";
+
 	}
 
 }
