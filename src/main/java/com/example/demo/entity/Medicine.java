@@ -25,6 +25,8 @@ public class Medicine {
 	private Integer count;
 	@Column(name = "m_check")
 	private Boolean mCheck;
+	@Column(name = "m_time")
+	private String mTime;
 	private Boolean morning;
 	private Boolean daytime;
 	private Boolean night;
@@ -126,6 +128,14 @@ public class Medicine {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getMTime() {
+		return mTime;
+	}
+
+	public void setMTime(String mTime) {
+		this.mTime = mTime;
 	}
 
 }

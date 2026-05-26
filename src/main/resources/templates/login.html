@@ -9,10 +9,10 @@
 
 <body>
 	<header>
-		<h1>お薬チェックン</h1>
+		<h1>お薬チェッくん</h1>
 	</header>
 	<h2>ユーザーログイン</h1>
-		<span th:text="${message}" style="color: red"></span>
+		<span th:text="${message}" style="color: red"></span><br>
 
 		<table border="1">
 			<form action="/login" method="post">
@@ -30,7 +30,7 @@
 						<input type="password" name="password" placeholder="パスワード" class="textbox-2"><br>
 					</tb>
 				</tr>
-				<button>ログイン</button><br>
+				<button class="logbut">ログイン</button><br>
 
 				<a href="/account">新規ユーザー登録はこちら</a>
 			</form>

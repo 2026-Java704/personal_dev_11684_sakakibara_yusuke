@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Medicine;
 import com.example.demo.entity.User;
@@ -40,8 +42,11 @@ public class MedicineController {
 	@GetMapping("/medicine")
 	public String showMedicines(
 			@RequestParam(name = "time", defaultValue = "alltime") String time, Model model) {
-		List<Medicine> medicines;
 
+		if (account.getId() == null) {
+			return "login";
+		}
+		List<Medicine> medicines;
 		// パラメータの値によって、取得するデータを切り替える
 		if ("daytime".equals(time)) {
 			medicines = medicineRepository.findByUserIdAndDaytimeTrue(account.getId());
@@ -95,7 +100,8 @@ public class MedicineController {
 	@PostMapping("/medicine/{id}/check")
 	public String check(
 			@PathVariable Integer id,
-			@RequestParam(defaultValue = "false") Boolean mCheck) {
+			@RequestParam(defaultValue = "false") Boolean mCheck,
+			RedirectAttributes redirectAttributes) {
 
 		if (account.getId() == null) {
 			return "login";
@@ -109,6 +115,13 @@ public class MedicineController {
 		}
 
 		medicine.setMCheck(mCheck);
+
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd日HH時mm分");
+		String currentTime = now.format(formatter);
+
+		redirectAttributes.addFlashAttribute("clickTime", currentTime);
+		medicine.setMTime(currentTime);
 
 		medicineRepository.save(medicine);
 
@@ -206,6 +219,10 @@ public class MedicineController {
 	//新規
 	@GetMapping("/medicine/add")
 	public String create() {
+		if (account.getId() == null) {
+			return "login";
+		}
+
 		return "addMedicine";
 	}
 
@@ -218,6 +235,11 @@ public class MedicineController {
 			@RequestParam(defaultValue = "false") Boolean daytime,
 			@RequestParam(defaultValue = "false") Boolean night,
 			Model model) {
+
+		if (account.getId() == null) {
+			return "login";
+		}
+
 		List<String> errorMList = new ArrayList<>();
 		if (name.length() == 0) {
 			errorMList.add("名前は必須です");
@@ -240,22 +262,6 @@ public class MedicineController {
 		medicine.setMCheck(false);
 		medicineRepository.save(medicine);
 		return "redirect:/medicine";
-	}
-
-	@GetMapping("/medicine/time")
-	public String time(
-			@RequestParam(defaultValue = "") Boolean mCheck,
-			Model model) {
-
-		List<Medicine> medicine = medicineRepository.findByMCheck(mCheck);
-
-		if (mCheck == true) {
-			LocalDateTime myObj = LocalDateTime.now();
-			System.out.println(myObj);
-		}
-
-		return "medicineTime";
-
 	}
 
 }

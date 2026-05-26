@@ -9,22 +9,24 @@
 
 <body>
 	<header th:replace="~{header}"></header>
-	<h1>服用一覧</h1>
-	<div style="margin-bottom: 20px;">
-		<a th:href="@{/medicine(time='alltime')}"
-			th:style="${currentTime == 'alltime'} ? 'font-weight:bold;' : ''" class="circle">全</a> 
-		<a th:href="@{/medicine(time='morning')}"
-			th:style="${currentTime == 'morning'} ? 'font-weight:bold;' : ''" class="circle">朝</a>
-		<a th:href="@{/medicine(time='daytime')}"
-			th:style="${currentTime == 'daytime'} ? 'font-weight:bold;' : ''" class="circle">昼</a> 
-		<a th:href="@{/medicine(time='night')}" 
-		    th:style="${currentTime == 'night'} ? 'font-weight:bold;' : ''" class="circle">晩</a>
+	<div style="margin-bottom: 20px;" class="circle-area">
+		<a th:href="@{/medicine(time='alltime')}" th:style="${currentTime == 'alltime'} ? 'font-weight:bold;' : ''"
+			class="circle">全</a>
+		<a th:href="@{/medicine(time='morning')}" th:style="${currentTime == 'morning'} ? 'font-weight:bold;' : ''"
+			class="circle">朝</a>
+		<a th:href="@{/medicine(time='daytime')}" th:style="${currentTime == 'daytime'} ? 'font-weight:bold;' : ''"
+			class="circle">昼</a>
+		<a th:href="@{/medicine(time='night')}" th:style="${currentTime == 'night'} ? 'font-weight:bold;' : ''"
+			class="circle">晩</a>
 	</div>
 
 	<form th:action="@{/medicine/clear-all}" method="post">
-		<button type="submit" style="margin-left: 720px;">確認クリア</button>
+		<button type="submit" style="margin-left: 720px;" class="clebut">確認クリア</button>
 	</form>
 	<table border="1">
+		<tr>
+			<th colspan="7">服用一覧</th>
+		</tr>
 		<tr>
 			<th>No</th>
 			<th>薬剤名</th>
@@ -40,7 +42,7 @@
 			<td th:text="${medic.count}"></td>
 			<td>
 				<form th:action="@{/medicine/{id}/check(id=${medic.id})}" method="post">
-					<input type="checkbox" name="mCheck" value="true" onchange="this.form.submit()">
+					<input type="checkbox" name="mCheck" value="true" onchange="this.form.submit()" class="checkboxItem">
 					服薬済
 				</form>
 			</td>
@@ -58,12 +60,14 @@
 		</tr>
 	</table>
 	<div class="button_solid004">
-	<a href="/medicine/add">お薬の追加</a>
+		<a href="/medicine/add">お薬の追加</a>
 	</div>
 	<!--	<a href="/medicine/add">薬の追加</a>-->
 	<input type="hidden">
-	<h2 input type="hidden">服用済み</h2>
 	<table border="1" input type="hidden">
+		<tr>
+			<th colspan="7">服用一覧</th>
+		</tr>
 		<tr>
 			<th>No</th>
 			<th>薬剤名</th>
@@ -79,9 +83,12 @@
 			<td th:text="${medic.count}"></td>
 			<td>
 				<form th:action="@{/medicine/{id}/check(id=${medic.id})}" method="post">
+
 					<input type="checkbox" name="mCheck" value="true" checked onchange="this.form.submit()">
 					服薬済
 				</form>
+				<!-- medicineに保存されているmTimeを表示するコード -->
+				<span th:text="${medic.mTime}"></span>
 			</td>
 			<td th:text="${medic.note}"></td>
 			<td>
@@ -96,9 +103,6 @@
 			</td>
 		</tr>
 	</table>
-	<form th:action="/medicine/time">
-		<button>rireki</button>
-	</form>
 </body>
 <script>
 	function clearAll() {

@@ -9,7 +9,7 @@
 
 <body>
 	<header th:replace="~{header}"></header>
-	<h1>新規服薬登録</h1>
+	<h1>新規お薬登録</h1>
 
 	<span th:text="${errorMList}" style="color: red"></span>
 	<form action="/medicine/add" method="post">
@@ -43,7 +43,7 @@
 				</td>
 			</tr>
 		</table>
-		<button>登録</button>
+		<button class="addMbut">登録</button>
 	</form>
 
 </body>

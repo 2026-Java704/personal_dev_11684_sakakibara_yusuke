@@ -25,26 +25,26 @@
 			<tr>
 				<td th:text="${medicine.id}"></td>
 				<td>
-					<input type="text" name="name" th:value="${medicine.name}">
+					<input type="text" name="name" th:value="${medicine.name}" class="textbox-1" >
 				</td>
 				<td>
-					<input type="text" name="count" th:value="${medicine.count}">
+					<input type="text" name="count" th:value="${medicine.count}" class="textbox-1">
 				</td>
 				<td>
-					<input type="text" name="note" th:value="${medicine.note}">
+					<input type="text" name="note" th:value="${medicine.note}" class="textbox-1">
 				</td>
 				<td>
-					<input type="checkbox" name="morning" value="true">
+					<input type="checkbox" name="morning"  value="true" th:checked="${medicine.morning}">
 				</td>
 				<td>
-					<input type="checkbox" name="daytime" value="true">
+					<input type="checkbox" name="daytime" value="true" th:checked="${medicine.daytime}">
 				</td>
 				<td>
-					<input type="checkbox" name="night" value="true">
+					<input type="checkbox" name="night" value="true" th:checked="${medicine.night}">
 				</td>
 			</tr>
 		</table>
-		<button>更新</button>
+		<button class="addMbut">更新</button>
 	</form>
 </body>
 

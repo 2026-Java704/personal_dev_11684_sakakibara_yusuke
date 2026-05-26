@@ -15,6 +15,7 @@ CREATE TABLE medicine (
 	note VARCHAR(500),
 	count INTEGER,
 	m_check boolean NOT NULL DEFAULT FALSE,
+	m_time VARCHAR(40),
 	morning boolean NOT NULL DEFAULT FALSE,
 	daytime boolean NOT NULL DEFAULT FALSE,
 	night boolean NOT NULL DEFAULT FALSE,

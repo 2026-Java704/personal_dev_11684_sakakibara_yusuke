@@ -8,6 +8,9 @@
 </head>
 
 <body>
+	<header>
+		<h1>お薬チェッくん</h1>
+	</header>
 	<h1>新規ユーザー登録</h1>
 
 	<form action="/account" method="post">
@@ -18,17 +21,17 @@
 			<tr>
 				<th>ユーザー名</th>
 				<td>
-					<input type="text" name="name" th:value="${name}" class="textbox-2">
+					<input type="text" name="name" th:value="${name}" placeholder="例：田中太郎" class="textbox-2">
 				</td>
 			</tr>
 			<tr>
 				<th>パスワード</th>
 				<td>
-					<input type="text" name="password" class="textbox-2">
+					<input type="text" name="password" placeholder="password" class="textbox-2">
 				</td>
 			</tr>
 		</table>
-		<button>登録</button>
+		<button class="logbut">登録</button>
 
 	</form>
 
